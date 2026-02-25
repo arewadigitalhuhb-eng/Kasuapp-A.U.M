@@ -1,0 +1,15 @@
+{
+  "name": "KasuApp Pro Edition",
+  "short_name": "KasuApp",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#6a11cb",
+  "theme_color": "#2575fc",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3081/3081559.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
