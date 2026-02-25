@@ -21,7 +21,7 @@
 ## 📂 Yadda za a saka shi (Installation)
 1. Kayi **Clone** na wannan repository:
    ```bash
-   git clone [https://github.com/SUNANKA/kasuapp-pro.git](https://github.com/SUNANKA/kasuapp-pro.git)
+   git clone (https://arewadigitalhuhb-eng.github.io/Kasuapp-A.U.M/)
 
  1.  Bude login.html a cikin Browser dinka.
 
@@ -34,4 +34,4 @@ Wannan manhaja tana karkashin lasisin MIT. Kuna iya amfani da ita ko gyara ta ya
 ✍️ Marubuci (Author)
 An gina ta ne da so da kauna don bunkasa sana'o'in gida.
 
-. GitHub: @SUNANKA
+. GitHub: [@SUNANKA](https://arewadigitalhuhb-eng.github.io/Kasuapp-A.U.M/)
