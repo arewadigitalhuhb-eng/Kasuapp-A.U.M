@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasuapp Abdullahi Umar Muazu - Stock Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <button class="back-btn" onclick="goPage('index')" style="background:none; border:none; font-size:24px; cursor:pointer; color:#2575fc;">←</button>
+        <h2 style="margin-left: 20px;">Kayan dake Akwai (Stock)</h2>
+    </header>
+
+    <div class="main-content" style="margin-left: 0; padding: 20px; padding-bottom: 80px;">
+        
+        <div class="sale-card">
+            <h3>Saka Sabon Kaya</h3>
+            <div class="input-group" style="margin-top: 15px;">
+                <input type="text" id="pName" placeholder="Sunan Kaya (Product Name)">
+                
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <input type="number" id="pQty" placeholder="Yawa (Qty)" style="flex: 1;">
+                    <input type="number" id="pPrice" placeholder="Kudin Sayo" style="flex: 1;">
+                </div>
+
+                <select id="pCategory" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-top: 10px;">
+                    <option value="General">-- Zaɓi Category --</option>
+                    </select>
+
+                <button class="confirm-btn" onclick="addProduct()" style="margin-top: 15px;">Saka Kaya a Stock</button>
+            </div>
+        </div>
+
+        <div class="sale-card" style="margin-top: 20px;">
+            <h3>Jerin Kaya (Inventory List)</h3>
+            <div style="overflow-x: auto; margin-top: 10px;">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Kaya</th>
+                            <th>Yawa</th>
+                            <th>Kudin Sayo</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="goPage('index')">
+            <span>🏠</span>
+            <p>Home</p>
+        </div>
+        <div class="nav-item active" onclick="goPage('stocks')">
+            <span>📦</span>
+            <p>Stock</p>
+        </div>
+        <div class="nav-center" onclick="goPage('sale')">+</div>
+        <div class="nav-item" onclick="goPage('customers')">
+            <span>👥</span>
+            <p>Cust</p>
+        </div>
+        <div class="nav-item" onclick="goPage('upgrade')">
+            <span>⚙️</span>
+            <p>Settings</p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        window.onload = function() {
+            displayStock(); // Nuna kaya
+            loadCategoriesInSelect(); // Loda rabe-raben kaya a dropdown
+            if(typeof applyAppName === "function") applyAppName();
+        };
+
+        // Karamin function na loda categories musamman ga wannan shafin
+        function loadCategoriesInSelect() {
+            let cats = JSON.parse(localStorage.getItem('categories')) || [];
+            let select = document.getElementById('pCategory');
+            cats.forEach(c => {
+                let option = document.createElement('option');
+                option.value = c;
+                option.innerText = c;
+                select.appendChild(option);
+            });
+        }
+    </script>
+</body>
+</html>

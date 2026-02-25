@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasuapp Abdullahi Umar Muazu - Reports</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <button class="back-btn" onclick="goPage('index')" style="background:none; border:none; font-size:24px; cursor:pointer; color:#2575fc;">←</button>
+        <h2 style="margin-left:15px;">📈 Rahoton Kasuwanci</h2>
+    </header>
+
+    <div class="main-content" style="margin-left:0; padding:20px; padding-bottom: 100px;">
+        <div class="cards">
+            <div class="card purple">
+                <p class="label">Kudin Shiga (Month)</p>
+                <p class="value" id="repMonthlySales">₦0</p>
+            </div>
+            <div class="card green">
+                <p class="label">Riba (Total Profit)</p>
+                <p class="value" id="repTotalProfit">₦0</p>
+            </div>
+            <div class="card orange">
+                <p class="label">Yawan Ciniki (Sales Count)</p>
+                <p class="value" id="repSalesCount">0</p>
+            </div>
+        </div>
+        
+        
+        <div class="sale-card" style="margin-top:20px;">
+            <h3>📊 Kayan da aka fi Saye (Top Selling)</h3>
+            <div id="topProductsList" style="margin-top: 15px;">
+                <p style="color: #888; font-size: 14px;">Loda bayanai...</p>
+            </div>
+        </div>
+
+        <div class="sale-card" style="margin-top:20px;">
+            <h3>📅 Performance Details</h3>
+            <p style="font-size: 13px; color: #666;">Wannan rahoton yana nuna muku cigaban kasuwancinku na kwanaki 30 da suka wuce.</p>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="goPage('index')">
+            <span>🏠</span>
+            <p>Home</p>
+        </div>
+        <div class="nav-item" onclick="goPage('stocks')">
+            <span>📦</span>
+            <p>Stock</p>
+        </div>
+        <div class="nav-center" onclick="goPage('sale')">+</div>
+        <div class="nav-item" onclick="goPage('customers')">
+            <span>👥</span>
+            <p>Cust</p>
+        </div>
+        <div class="nav-item active" onclick="goPage('reports')">
+            <span>📈</span>
+            <p>Reports</p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        window.onload = function() {
+            generateReport(); // Wannan function din yana cikin dashboard.js
+            if(typeof applyAppName === "function") applyAppName();
+        };
+    </script>
+</body>
+</html>

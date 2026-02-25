@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasuapp Abdullahi Umar Muazu- New Sale</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="sale-page">
+
+    <div class="sale-container" style="padding-bottom: 100px;"> <header class="sale-header" style="display: flex; align-items: center; padding: 15px;">
+            <button class="back-btn" onclick="goPage('index')" style="background:none; border:none; font-size:24px; cursor:pointer; color:#2575fc;">←</button>
+            <h2 style="margin-left:15px;">New Sale 🛒</h2>
+        </header>
+
+        <div class="sale-card" style="margin: 15px;">
+            <div class="input-group">
+                <label>Abokin Ciniki (Optional)</label>
+                <select id="saleCustomer">
+                    <option value="Bako">-- Zaɓi Customer --</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Sunan Kaya (Item Name)</label>
+                <input type="text" id="itemName" placeholder="Fara rubuta sunan kaya..." oninput="autoFillDetails()" list="productsList">
+                <datalist id="productsList"></datalist>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div class="input-group" style="flex: 1;">
+                    <label>Farashi (₦)</label>
+                    <input type="number" id="sellingPrice" placeholder="0.00">
+                </div>
+                <div class="input-group" style="flex: 1;">
+                    <label>Yawa (Qty)</label>
+                    <input type="number" id="quantity" value="1">
+                </div>
+            </div>
+
+            <input type="hidden" id="costPrice">
+            <button class="confirm-btn" onclick="processSale()" style="margin-top: 10px;">Tabbatar da Ciniki (Complete)</button>
+        </div>
+    </div>
+
+    <div id="receiptModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; justify-content:center; align-items:center;">
+        <div id="receiptArea" style="background:white; width:90%; max-width:320px; padding:20px; border-radius:15px; font-family: 'Courier New', monospace;">
+            <h3 id="receiptStoreName" style="text-align:center; text-transform:uppercase;">KasuApp</h3>
+            <p style="text-align:center; font-size:12px; border-bottom:1px dashed #000; padding-bottom:10px;" id="receiptDate"></p>
+            
+            <div style="margin:15px 0; font-size: 14px;">
+                <div style="display:flex; justify-content:space-between;"><span>Item:</span> <b id="receiptItem"></b></div>
+                <div style="display:flex; justify-content:space-between;"><span>Qty:</span> <b id="receiptQty"></b></div>
+                <div style="display:flex; justify-content:space-between;"><span>Price:</span> <b id="receiptPrice"></b></div>
+                <div style="display:flex; justify-content:space-between; border-top:2px solid #000; padding-top:8px; margin-top:10px;">
+                    <span>TOTAL:</span> <b id="receiptTotal"></b>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 20px;">
+                <button onclick="printReceipt()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px;">🖨️ Print / PDF</button>
+                <button onclick="closeReceipt()" style="background:#eee; color:#333; border:none; padding:12px; border-radius:8px;">❌ Rufe</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="goPage('index')">
+            <span>🏠</span>
+            <p>Home</p>
+        </div>
+        <div class="nav-item" onclick="goPage('stocks')">
+            <span>📦</span>
+            <p>Stock</p>
+        </div>
+        <div class="nav-center" onclick="goPage('sale')">+</div>
+        <div class="nav-item" onclick="goPage('customers')">
+            <span>👥</span>
+            <p>Cust</p>
+        </div>
+        <div class="nav-item" onclick="goPage('upgrade')">
+            <span>⚙️</span>
+            <p>Settings</p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        window.onload = function() {
+            if(typeof loadProductList === "function") loadProductList();
+            if(typeof loadCustomersInSale === "function") loadCustomersInSale();
+            if(typeof applyAppName === "function") applyAppName();
+        };
+    </script>
+</body>
+</html>

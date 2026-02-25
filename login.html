@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasuapp Abdullahi Umar Muazu - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="sale-page">
+    <div class="sale-container" style="text-align: center; max-width: 350px; margin: auto; padding-top: 100px;">
+        <div style="background: #2575fc; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <span style="color: white; font-size: 30px;">🔐</span>
+        </div>
+        
+        <h2 style="color: #2575fc; margin-bottom: 10px;">Kasuapp A.U.M</h2>
+        <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Enter the secret code to open the store.</p>
+        
+        <div class="input-group">
+            <input type="password" id="pinInput" placeholder="Enter PIN" 
+                   onkeyup="if(event.key === 'Enter') checkLogin()"
+                   style="text-align: center; letter-spacing: 5px; font-size: 22px; padding: 15px; border-radius: 12px; border: 2px solid #eee;">
+        </div>
+        
+        <button class="confirm-btn" onclick="checkLogin()" style="background: #2575fc; width: 100%; padding: 15px; font-size: 16px; margin-top: 10px;">Login</button>
+        
+        <p id="loginMsg" style="color: #ff4d4d; margin-top: 15px; font-size: 13px; font-weight: 600;"></p>
+        
+        <p style="color: #999; font-size: 11px; margin-top: 50px;">©2026 Powered by KasuApp A.U.M System</p>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        // Idan riga an yi login, kai shi dashboard
+        if(sessionStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'index.html';
+        }
+
+        // Tabbatar an duba PIN a dashboard.js
+        // Idan babu shi a can, function din yana kasa:
+        function checkLogin() {
+            let pin = document.getElementById('pinInput').value;
+            let savedPin = localStorage.getItem('userPin') || "7434"; // 7434 shine na asali
+            
+            if (pin === savedPin) {
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'index.html';
+            } else {
+                let msg = document.getElementById('loginMsg');
+                msg.innerText = "❌ Lambar sirri ba ta yi ba!";
+                // Girgiza akwatin idan PIN bai yi ba (Optional animation)
+                document.getElementById('pinInput').style.borderColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>

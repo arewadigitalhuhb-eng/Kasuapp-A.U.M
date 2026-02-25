@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasuapp Abdullahi Umar Muazu - Customers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <button class="back-btn" onclick="goPage('index')" style="background:none; border:none; font-size:24px; cursor:pointer; color:#2575fc;">←</button>
+        <h2 style="margin-left:15px;">👥 Abokan Ciniki (Customers)</h2>
+    </header>
+
+    <div class="main-content" style="margin-left:0; padding:20px; padding-bottom: 100px;">
+        <div class="sale-card">
+            <h3>Add New Customer</h3>
+            <div class="input-group" style="margin-top: 15px;">
+                <input type="text" id="custName" placeholder="Sunan Customer">
+                <input type="text" id="custPhone" placeholder="Lambar Waya" style="margin-top:10px;">
+                <button class="confirm-btn" onclick="addCustomer()" style="margin-top:15px;">Ajiye Customer</button>
+            </div>
+        </div>
+
+        <div class="sale-card" style="margin-top: 20px;">
+            <h3>Customer List</h3>
+            <div style="overflow-x: auto;">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="goPage('index')">
+            <span>🏠</span>
+            <p>Home</p>
+        </div>
+        <div class="nav-item" onclick="goPage('stocks')">
+            <span>📦</span>
+            <p>Stock</p>
+        </div>
+        <div class="nav-center" onclick="goPage('sale')">+</div>
+        <div class="nav-item active" onclick="goPage('customers')">
+            <span>👥</span>
+            <p>Cust</p>
+        </div>
+        <div class="nav-item" onclick="goPage('update')">
+            <span>⚙️</span>
+            <p>Settings</p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        window.onload = function() {
+            displayCustomers();
+            if(typeof applyAppName === "function") applyAppName();
+        };
+    </script>
+</body>
+</html>

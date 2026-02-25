@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasuapp Abdullahi Umar Muazu - Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <button class="back-btn" onclick="goPage('index')" style="background:none; border:none; font-size:24px; cursor:pointer; color:#2575fc;">←</button>
+        <h2 style="margin-left: 15px; font-size: 18px;">Settings & Updates</h2>
+    </header>
+
+    <div class="main-content" style="margin-left: 0; padding: 20px; padding-bottom: 100px;">
+        
+        <h3 style="margin-bottom: 15px; color: #333;">⚙️ App Management</h3>
+        <div class="settings-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 25px;">
+            <div class="sale-card" onclick="goPage('profile')" style="text-align: center; cursor: pointer; padding: 15px;">
+                <span style="font-size: 30px;">🏪</span>
+                <p style="font-weight: 600; margin-top: 10px; font-size: 14px;">Store Info</p>
+            </div>
+            <div class="sale-card" onclick="changePin()" style="text-align: center; cursor: pointer; padding: 15px;">
+                <span style="font-size: 30px;">🔐</span>
+                <p style="font-weight: 600; margin-top: 10px; font-size: 14px;">Security</p>
+            </div>
+            <div class="sale-card" onclick="goPage('categories')" style="text-align: center; cursor: pointer; padding: 15px;">
+                <span style="font-size: 30px;">📂</span>
+                <p style="font-weight: 600; margin-top: 10px; font-size: 14px;">Categories</p>
+            </div>
+        </div>
+
+        <div class="sale-card">
+            <h3>📛 Sunan Shago</h3>
+            <p style="font-size: 12px; color: #666; margin-bottom: 10px;">Canja sunan da yake fita a saman App dinka.</p>
+            <div class="input-group">
+                <input type="text" id="newAppName" placeholder="Sabuwar Suna...">
+                <button class="confirm-btn" onclick="changeAppName()" style="margin-top: 10px;">Save Name</button>
+            </div>
+        </div>
+
+        <h3 style="margin: 25px 0 15px; color: #333;">☁️ Data & Cloud</h3>
+        <div class="sale-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div>
+                    <h4 style="margin:0;">Database Backup</h4>
+                    <small style="color:#777;">Ajiye bayanan kasuwanci</small>
+                </div>
+                <button onclick="exportData()" style="background:#2575fc; color:white; border:none; padding:8px 15px; border-radius:8px; cursor:pointer;">Backup</button>
+            </div>
+            <hr style="border: 0.5px solid #eee; margin: 10px 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                <div>
+                    <h4 style="margin:0;">Restore Data</h4>
+                    <input type="file" id="importFile" style="display:none;" onchange="importData()">
+                    <small style="color:#777;">Dawo da tsohon backup</small>
+                </div>
+                <button onclick="document.getElementById('importFile').click()" style="background:#28a745; color:white; border:none; padding:8px 15px; border-radius:8px; cursor:pointer;">Import</button>
+            </div>
+        </div>
+
+        <h3 style="margin: 25px 0 15px; color: #2575fc;">🚀 Developer Tools (Pro)</h3>
+        <div class="sale-card" style="border: 1px dashed #2575fc; background: #f0f7ff;">
+            <p style="font-size: 13px; color: #555;">Kuna iya ƙara sabbin sassa (Modules) a nan gaba.</p>
+            <button class="confirm-btn" onclick="addNewModule()" style="background: #2575fc; margin-top: 10px;">+ Create New Module</button>
+        </div>
+
+        <button class="confirm-btn" onclick="resetSystem()" style="background: #ff4d4d; margin-top: 30px; width: 100%;">⚠️ Factory Reset</button>
+
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="goPage('index')">
+            <span>🏠</span>
+            <p>Home</p>
+        </div>
+        <div class="nav-item" onclick="goPage('stocks')">
+            <span>📦</span>
+            <p>Stock</p>
+        </div>
+        <div class="nav-center" onclick="goPage('sale')">+</div>
+        <div class="nav-item" onclick="goPage('history')">
+            <span>📊</span>
+            <p>History</p>
+        </div>
+        <div class="nav-item active">
+            <span>⚙️</span>
+            <p>Settings</p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        window.onload = function() {
+            // Tabbatar branding ya yi aiki
+            if(typeof applyAppName === "function") applyAppName();
+            
+            // Placeholder na sunan shago
+            let currentName = localStorage.getItem('appName') || 'KasuApp';
+            let nameField = document.getElementById('newAppName');
+            if(nameField) nameField.placeholder = "Yanzu: " + currentName;
+        }
+    </script>
+</body>
+</html>
